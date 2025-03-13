@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block title %}Application Details{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="mb-4">
+                    <a href="{{ url_for('policyholder_dashboard') }}" class="text-decoration-none">
+                        <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+                    </a>
+                </div>
+                
+                <div class="card border-0 shadow-lg">
+                    <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center">
+                        <h4 class="m-0">Application Details</h4>
+                        <span class="badge {{ 'bg-success' if application.eligible else 'bg-warning text-dark' }} py-2 px-3">
+                            {{ 'Eligible' if application.eligible else 'Review Needed' }}
+                        </span>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5 class="text-primary">Policy Information</h5>
+                                <div class="card border-0 bg-light p-3">
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Carrier</span>
+                                        <p class="mb-0 fw-bold">{{ application.insurance_carrier }}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Policy Type</span>
+                                        <p class="mb-0 fw-bold">{{ application.policy_type }}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Death Benefit</span>
+                                        <p class="mb-0 fw-bold">${{ "{:,.2f}".format(application.death_benefit) }}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Policy Issue Date</span>
+                                        <p class="mb-0 fw-bold">{{ application.policy_issue_date.strftime('%b %d, %Y') }}</p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Existing Loan</span>
+                                        <p class="mb-0 fw-bold">${{ "{:,.2f}".format(application.existing_loan) }}</p>
+                                    </div>
+                                    <div>
+                                        <span class="text-muted small">Issue Class</span>
+                                        <p class="mb-0 fw-bold">{{ application.issue_class }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="text-primary">Health Information</h5>
+                                <div class="card border-0 bg-light p-3">
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Health Rating</span>
+                                        <p class="mb-0 fw-bold">
+                                            {% if application.health_rating == 1 %}
+                                                Very Healthy
+                                            {% elif application.health_rating == 2 %}
+                                                Healthy
+                                            {% elif application.health_rating == 3 %}
+                                                Average
+                                            {% elif application.health_rating == 4 %}
+                                                Health Impaired
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-muted small">Alcohol Use</span>
+                                        <p class="mb-0 fw-bold">{{ application.alcohol_use }}</p>
+                                    </div>
+                                    <div>
+                                        <span class="text-muted small">Smoking Status</span>
+                                        <p class="mb-0 fw-bold">{{ application.smoking_status }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="text-primary">Application Status</h5>
+                                <div class="card border-0 bg-light p-3 mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <span class="text-muted small">Application Date</span>
+                                            <p class="mb-0 fw-bold">{{ application.created_at.strftime('%b %d, %Y at %I:%M %p') }}</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted small">Application ID</span>
+                                            <p class="mb-0 fw-bold">{{ application.id }}</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted small">Status</span>
+                                            <p class="mb-0 fw-bold">{{ application.status.capitalize() }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                {% if application.eligible %}
+                                    <div class="alert alert-success">
+                                        <div class="d-flex">
+                                            <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+                                            <div>
+                                                <h5 class="alert-heading">Good News! You're eligible for a loan.</h5>
+                                                <p class="mb-0">Based on your information, we can offer you a loan secured by your life insurance policy. To move forward, we'll need some additional health information.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 col-md-8 mx-auto mt-4">
+                                        <a href="{{ url_for('next_steps') }}" class="btn btn-primary btn-lg">Continue to Next Steps</a>
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-warning">
+                                        <div class="d-flex">
+                                            <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                                            <div>
+                                                <h5 class="alert-heading">We Need More Information</h5>
+                                                <p class="mb-0">Based on your information, we need additional details to determine your eligibility. Our lending specialists would like to speak with you about your options.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 col-md-8 mx-auto mt-4">
+                                        <a href="#" class="btn btn-primary btn-lg">Speak with a Specialist</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
