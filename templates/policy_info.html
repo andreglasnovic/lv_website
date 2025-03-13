@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Policy Information{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <div class="progress mb-2" style="height: 5px;">
+                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h5 class="m-0">Step 2 of 4 – Estimated Time: 2 Minutes</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <h2 class="card-title mb-4">Tell us about your policy</h2>
+                        
+                        <form action="{{ url_for('policy_info') }}" method="post">
+                            <div class="mb-3">
+                                <label for="insurance_carrier" class="form-label">Insurance Carrier</label>
+                                <input type="text" class="form-control" id="insurance_carrier" name="insurance_carrier" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="policy_type" class="form-label">Policy Type</label>
+                                <select class="form-select" id="policy_type" name="policy_type" required>
+                                    <option value="" selected disabled>Choose policy type</option>
+                                    <option value="Universal Life">Universal Life</option>
+                                    <option value="Term Life">Term Life</option>
+                                    <option value="Whole Life">Whole Life</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="death_benefit" class="form-label">Death Benefit Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="death_benefit" name="death_benefit" required min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="policy_issue_date" class="form-label">Policy Issue Date</label>
+                                <input type="date" class="form-control" id="policy_issue_date" name="policy_issue_date" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="existing_loan" class="form-label">Existing Loan Amount (if any)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="existing_loan" name="existing_loan" value="0" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="issue_class" class="form-label">Issue Class</label>
+                                <select class="form-select" id="issue_class" name="issue_class" required>
+                                    <option value="" selected disabled>Choose issue class</option>
+                                    <option value="Preferred Plus">Preferred Plus</option>
+                                    <option value="Preferred">Preferred</option>
+                                    <option value="Standard Plus">Standard Plus</option>
+                                    <option value="Standard">Standard</option>
+                                    <option value="Substandard">Substandard</option>
+                                </select>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Continue to Health Information</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

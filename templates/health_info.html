@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Health & Lifestyle{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <div class="progress mb-2" style="height: 5px;">
+                            <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h5 class="m-0">Step 3 of 4 – Estimated Time: 1 Minute</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <h2 class="card-title mb-4">Tell us about your health</h2>
+                        
+                        <form action="{{ url_for('health_info') }}" method="post">
+                            <div class="mb-4">
+                                <label class="form-label">How would you rate your overall health?</label>
+                                <div class="health-rating mb-3">
+                                    <div class="row g-2">
+                                        <div class="col-3">
+                                            <div class="form-check health-option">
+                                                <input class="form-check-input" type="radio" name="health_rating" id="health1" value="1" required>
+                                                <label class="form-check-label w-100" for="health1">
+                                                    <div class="card text-center p-3 h-100">
+                                                        <span class="display-6 mb-2">😀</span>
+                                                        <span class="fw-bold">Very Healthy</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="form-check health-option">
+                                                <input class="form-check-input" type="radio" name="health_rating" id="health2" value="2" required>
+                                                <label class="form-check-label w-100" for="health2">
+                                                    <div class="card text-center p-3 h-100">
+                                                        <span class="display-6 mb-2">🙂</span>
+                                                        <span class="fw-bold">Healthy</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="form-check health-option">
+                                                <input class="form-check-input" type="radio" name="health_rating" id="health3" value="3" required>
+                                                <label class="form-check-label w-100" for="health3">
+                                                    <div class="card text-center p-3 h-100">
+                                                        <span class="display-6 mb-2">😐</span>
+                                                        <span class="fw-bold">Average</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="form-check health-option">
+                                                <input class="form-check-input" type="radio" name="health_rating" id="health4" value="4" required>
+                                                <label class="form-check-label w-100" for="health4">
+                                                    <div class="card text-center p-3 h-100">
+                                                        <span class="display-6 mb-2">🙁</span>
+                                                        <span class="fw-bold">Health Impaired</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="alcohol_use" class="form-label">Alcohol Consumption</label>
+                                <select class="form-select" id="alcohol_use" name="alcohol_use" required>
+                                    <option value="" selected disabled>Choose an option</option>
+                                    <option value="none">None</option>
+                                    <option value="occasional">Occasional (Social Drinking)</option>
+                                    <option value="moderate">Moderate (Weekly)</option>
+                                    <option value="heavy">Heavy (Daily)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="smoking_status" class="form-label">Smoking Status</label>
+                                <select class="form-select" id="smoking_status" name="smoking_status" required>
+                                    <option value="" selected disabled>Choose an option</option>
+                                    <option value="never">Never Smoked</option>
+                                    <option value="former">Former Smoker (Quit over 12 months ago)</option>
+                                    <option value="recent">Recent Quitter (Within 12 months)</option>
+                                    <option value="current">Current Smoker</option>
+                                </select>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Continue to Results</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

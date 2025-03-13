@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Next Steps{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="m-0">Additional Information Required</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <h2 class="card-title mb-4">You're almost there!</h2>
+                        <p class="mb-4">Thank you for completing the initial qualification steps. To proceed with your application, we need a few more details to customize your loan offer.</p>
+                        
+                        <div class="alert alert-success mb-4" role="alert">
+                            <div class="d-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill me-2" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                </svg>
+                                <div>
+                                    <h4 class="alert-heading">Pre-Qualified for a Loan!</h4>
+                                    <p class="mb-0">Based on your profile, you've been pre-qualified for a policy loan with LifeVault.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h4 class="mb-3">What happens next?</h4>
+                        <ol class="list-group list-group-numbered mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Health Questionnaire</div>
+                                    Complete a detailed health questionnaire to finalize your offer
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Policy Verification</div>
+                                    We'll verify your policy details with your insurance carrier
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Loan Offer</div>
+                                    Receive your personalized loan offer with flexible terms
+                                </div>
+                            </li>
+                        </ol>
+                        
+                        <p class="text-center mb-4">Our lending specialists are ready to guide you through the next steps.</p>
+                        
+                        <div class="d-grid gap-2 col-md-8 mx-auto">
+                            <button type="button" class="btn btn-primary btn-lg">Begin Health Questionnaire</button>
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Save & Continue Later</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

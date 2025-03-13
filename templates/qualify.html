@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Qualification{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <div class="progress mb-2" style="height: 5px;">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h5 class="m-0">Step 1 of 4 – Estimated Time: 1 Minute</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <h2 class="card-title mb-4">Tell us about your role</h2>
+                        <form action="{{ url_for('qualify') }}" method="post">
+                            <div class="mb-4">
+                                <label class="form-label">I am a:</label>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card border h-100">
+                                            <div class="card-body p-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="role" id="policyholder" value="policyholder" required>
+                                                    <label class="form-check-label w-100" for="policyholder">
+                                                        <div class="d-flex align-items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill text-primary me-2" viewBox="0 0 16 16">
+                                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                                            </svg>
+                                                            <span class="fw-bold">Policyholder</span>
+                                                        </div>
+                                                        <p class="small text-muted mb-0 mt-2">I own a life insurance policy and want to see if I qualify for a loan.</p>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border h-100">
+                                            <div class="card-body p-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="role" id="agent" value="agent" required>
+                                                    <label class="form-check-label w-100" for="agent">
+                                                        <div class="d-flex align-items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-briefcase-fill text-primary me-2" viewBox="0 0 16 16">
+                                                                <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+                                                                <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                                                            </svg>
+                                                            <span class="fw-bold">Insurance Agent</span>
+                                                        </div>
+                                                        <p class="small text-muted mb-0 mt-2">I'm an agent helping a client explore their loan options.</p>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Continue</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
